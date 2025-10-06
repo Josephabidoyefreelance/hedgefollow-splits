@@ -1,16 +1,13 @@
 {
-  "name": "hedgefollow-splits",
+  "name": "stock-split-scraper",
   "version": "1.0.0",
-  "type": "module",
   "main": "main.js",
-  "dependencies": {
-    "apify": "^3.5.0",
-    "axios": "^1.12.2",
-    "cheerio": "^1.1.2",
-    "express": "^5.1.0",
-    "googleapis": "^121.0.0"
-  },
   "scripts": {
     "start": "node main.js"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.0",
+    "axios": "^1.5.0",
+    "dotenv": "^16.0.0"
   }
 }
