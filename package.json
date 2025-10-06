@@ -1,0 +1,18 @@
+{
+  "name": "hedgefollow-splits",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "main.js",
+  "dependencies": {
+    "apify": "^3.5.0",
+    "express": "^5.1.0",
+    "googleapis": "^121.0.0"
+  },
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
