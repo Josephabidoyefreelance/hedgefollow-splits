@@ -1,0 +1,30 @@
+name: Stock Split Scraper
+
+# Run daily at 8 AM UTC
+on:
+  schedule:
+    - cron: '0 8 * * *'
+  workflow_dispatch:  # allows manual trigger
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout your repo
+      - uses: actions/checkout@v3
+
+      # Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Run your scraper
+      - name: Run scraper
+        env:
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+        run: node main.js
