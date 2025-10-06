@@ -1,4 +1,3 @@
-import fs from 'fs';
 import { google } from 'googleapis';
 import express from 'express';
 
@@ -7,10 +6,10 @@ const PORT = process.env.PORT || 3000;
 
 const SPREADSHEET_ID = '1b7sGAoaFkT_VxgM2NAZbnE5yCLI4ABsT7p2yot7ZF6U';
 const SHEET_NAME = 'Pratham Kumar Automation';
-const SERVICE_ACCOUNT_FILE = 'service_account.json';
 
 async function pushSplits(splits) {
-    const credentials = JSON.parse(fs.readFileSync(SERVICE_ACCOUNT_FILE, 'utf8'));
+    const credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS);
+
     const auth = new google.auth.GoogleAuth({
         credentials,
         scopes: ['https://www.googleapis.com/auth/spreadsheets'],
@@ -32,17 +31,20 @@ async function pushSplits(splits) {
     return '✅ Splits pushed successfully!';
 }
 
-// Replace this with your scraping logic from hedgefollow
 function getTomorrowSplits() {
-    // Example placeholder
     return [
         ['AAPL', 'NASDAQ', 'Apple Inc.', '4:1', '2025-10-07', '2025-10-06'],
     ];
 }
 
+// 🟢 Root route to confirm the service is running
+app.get('/', (req, res) => {
+    res.send('🚀 HedgeFollow Splits Automation is live! Visit /scrape-splits to trigger the update.');
+});
+
 app.get('/scrape-splits', async (req, res) => {
     try {
-        const splits = getTomorrowSplits(); // dynamic scraping function
+        const splits = getTomorrowSplits();
         const result = await pushSplits(splits);
         res.send(result);
     } catch (err) {
