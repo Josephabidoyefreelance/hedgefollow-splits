@@ -5,14 +5,12 @@
   "main": "main.js",
   "dependencies": {
     "apify": "^3.5.0",
+    "axios": "^1.12.2",
+    "cheerio": "^1.1.2",
     "express": "^5.1.0",
     "googleapis": "^121.0.0"
   },
-  "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "start": "node main.js"
+  }
 }
